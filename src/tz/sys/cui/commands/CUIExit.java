@@ -2,7 +2,7 @@ package tz.sys.cui.commands;
 
 import java.util.List;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.cui.CUI;
 import tz.sys.cui.CUIUtil;
 import tz.sys.cui.api.CUICommand;
@@ -32,7 +32,7 @@ public class CUIExit implements CUICommand {
 				CUI.exit();
 				System.exit(util.number());
 			} else {
-				SysUtil.error(util.error());
+				Sys.error(util.error());
 				return CUIState.ERROR;
 			}
 		} else {

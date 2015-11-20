@@ -5,7 +5,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.net.lib.URLEncodedUtils;
 import tz.sys.net.lib.URLEncodedUtils.NVPair;
 
@@ -20,7 +20,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.address);
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		if (this.uri.getQuery() != null) {
 			this.query = URLEncodedUtils.parse(uri);
@@ -45,7 +45,7 @@ public class DNS {
 		try {
 			this.uri = new URI(schema, this.uri.getRawUserInfo(), this.uri.getHost(), this.uri.getPort(), this.uri.getRawPath(), this.uri.getRawQuery(), this.uri.getRawFragment());
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		return this;
 	}
@@ -58,7 +58,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.uri.getScheme(), userinfo, this.uri.getHost(), this.uri.getPort(), this.uri.getRawPath(), this.uri.getRawQuery(), this.uri.getRawFragment());
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		return this;
 	}
@@ -71,7 +71,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.uri.getScheme(), this.uri.getRawUserInfo(), host, this.uri.getPort(), this.uri.getRawPath(), this.uri.getRawQuery(), this.uri.getRawFragment());
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		return this;
 	}
@@ -84,7 +84,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.uri.getScheme(), this.uri.getRawUserInfo(), this.uri.getHost(), port, this.uri.getRawPath(), this.uri.getRawQuery(), this.uri.getRawFragment());
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		return this;
 	}
@@ -97,7 +97,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.uri.getScheme(), this.uri.getRawUserInfo(), this.uri.getHost(), this.uri.getPort(), path, this.uri.getRawQuery(), this.uri.getRawFragment());
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		return this;
 	}
@@ -110,7 +110,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.uri.getScheme(), this.uri.getRawUserInfo(), this.uri.getHost(), this.uri.getPort(), this.uri.getRawPath(), query, this.uri.getRawFragment());
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		if (this.uri.getQuery() != null) {
 			this.query = URLEncodedUtils.parse(uri);
@@ -128,7 +128,7 @@ public class DNS {
 		try {
 			this.uri = new URI(this.uri.getScheme(), this.uri.getRawUserInfo(), this.uri.getHost(), this.uri.getPort(), this.uri.getRawPath(), this.uri.getRawQuery(), fragment);
 		} catch (URISyntaxException e) {
-			SysUtil.error("Address invalid: " + e);
+			Sys.error("Address invalid: " + e);
 		}
 		return this;
 	}

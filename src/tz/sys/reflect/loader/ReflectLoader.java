@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.reflect.annot.Loader;
 
 /**
@@ -29,7 +29,7 @@ public class ReflectLoader {
 	
 	public static void init(String trigger) {
 		for (ReflectFile file : ReflectLoader.sysloader().load()) {
-			SysUtil.log("SYSLOADER: " + file.name());
+			Sys.log("SYSLOADER: " + file.name());
 		}
 	}
 	

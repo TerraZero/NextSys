@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.net.IP;
 import tz.sys.net.dns.DNS;
 
@@ -34,8 +34,8 @@ public class UDPSocket {
 			this.socket = new DatagramSocket();
 			this.socket.connect(InetAddress.getLocalHost(), port);
 		} catch (SocketException | UnknownHostException e) {
-			SysUtil.error("Error by bind UDPSocket at port " + port);
-			SysUtil.exception(e);
+			Sys.error("Error by bind UDPSocket at port " + port);
+			Sys.exception(e);
 			return e;
 		}
 		return null;
@@ -54,7 +54,7 @@ public class UDPSocket {
 		try {
 			return this.socket.getSoTimeout();
 		} catch (SocketException e) {
-			SysUtil.exception(e);
+			Sys.exception(e);
 		}
 		return -1;
 	}

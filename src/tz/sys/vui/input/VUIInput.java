@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.reflect.ReflectUtil;
 import tz.sys.reflect.annot.Loader;
 import tz.sys.util.sync.Sync;
@@ -26,7 +26,7 @@ public class VUIInput extends VUIString {
 	
 	static {
 		VUIInput.validatetypes = new HashMap<String, VUIInputValidate>();
-		ReflectUtil.load("vui-input");
+		ReflectUtil.trigger("vui-input");
 	}
 	
 	public static void init(String trigger) {
@@ -145,7 +145,7 @@ public class VUIInput extends VUIString {
 	public void freezeIn() {
 		SyncResult result = Sync.stop("vuiinput");
 		if (!result.isOk()) {
-			SysUtil.exception(result.exception());
+			Sys.exception(result.exception());
 		}
 	}
 	

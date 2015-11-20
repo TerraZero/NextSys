@@ -6,7 +6,7 @@ import java.awt.event.ComponentListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.reflect.Reflect;
 import tz.sys.reflect.ReflectUtil;
 import tz.sys.reflect.annot.Program;
@@ -16,7 +16,7 @@ public class VUI {
 	private static VUI singleton;
 	
 	static {
-		ReflectUtil.load("VUI");
+		ReflectUtil.trigger("VUI");
 	}
 
 	public static VUI get() {
@@ -38,7 +38,7 @@ public class VUI {
 		ReflectUtil util = ReflectUtil.annotation(Program.class);
 		for (Reflect r : util.reflects()) {
 			Program p = r.annotation(Program.class);
-			if (p.name().equals(name) && SysUtil.isIntern(p.tags(), "vui")) {
+			if (p.name().equals(name) && Sys.isIntern(p.tags(), "vui")) {
 				r.call(p.function());
 			}
 		}

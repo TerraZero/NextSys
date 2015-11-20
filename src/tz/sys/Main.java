@@ -16,8 +16,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		if (!ReflectLoader.isStartJar()) {
-			SysUtil.verbose(false);
-			SysUtil.log("Detect eclipse start");
+			Sys.verbose(false);
+			Sys.log("Detect eclipse start");
 			String path = ReflectLoader.defaultURL().getPath();
 			String[] parts = path.substring(1).split("/");
 			
@@ -26,15 +26,15 @@ public class Main {
 				if (part.equals("NextSys")) break;
 				path += part + "/";
 			}
-			SysUtil.log("Detect root: " + path);
+			Sys.log("Detect root: " + path);
 			File root = new File(path);
 			for (File file : root.listFiles()) {
 				if (file.isDirectory() && !file.getName().startsWith(".")) {
 					ReflectLoader.addLoaderSource(new File(file.getAbsolutePath() + "/bin"));
-					SysUtil.log("ADD LOAD: " + file.getAbsolutePath() + "/bin");
+					Sys.log("ADD LOAD: " + file.getAbsolutePath() + "/bin");
 				}
 			}
-			SysUtil.verbose(true);
+			Sys.verbose(true);
 		}
 		
 		VUI vui = VUI.get();

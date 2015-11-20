@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import tz.sys.reflect.ReflectUtil;
 import tz.sys.reflect.annot.Loader;
 import tz.sys.vui.VUI;
 import tz.sys.vui.util.VUIUtil;
 
 @Loader(triggers={"VUI"}, weight=-1000)
-public class SysUtil {
+public class Sys {
 	
 	private static boolean vuiloaded;
 	private static boolean verbose;
@@ -22,17 +23,17 @@ public class SysUtil {
 	private static List<Exception> ebuffer;
 	
 	static {
-		SysUtil.verbose = true;
+		Sys.verbose = true;
 		
-		SysUtil.logbuffer = new ArrayList<String>();
-		SysUtil.warnbuffer = new ArrayList<String>();
-		SysUtil.errorbuffer = new ArrayList<String>();
-		SysUtil.ebuffer = new ArrayList<Exception>();
+		Sys.logbuffer = new ArrayList<String>();
+		Sys.warnbuffer = new ArrayList<String>();
+		Sys.errorbuffer = new ArrayList<String>();
+		Sys.ebuffer = new ArrayList<Exception>();
 	}
 	
 	public static void init(String trigger) {
 		if (trigger.equals("VUI")) {
-			SysUtil.vuiloaded = true;
+			Sys.vuiloaded = true;
 			
 			System.setOut(new PrintStream(System.out) {
 					
@@ -92,56 +93,56 @@ public class SysUtil {
 				
 			});
 			
-			SysUtil.flushLog();
-			SysUtil.flushWarn();
-			SysUtil.flushError();
-			SysUtil.flushException();
+			Sys.flushLog();
+			Sys.flushWarn();
+			Sys.flushError();
+			Sys.flushException();
 		}
 	}
 	
 	public static void verbose(boolean verbose) {
-		SysUtil.verbose = verbose;
+		Sys.verbose = verbose;
 	}
 	
 	public static void log(String log, String... placeholders) {
-		log = SysUtil.placeholder(log, placeholders);
-		if (SysUtil.vuiloaded) {
+		log = Sys.placeholder(log, placeholders);
+		if (Sys.vuiloaded) {
 			VUI.get().frame().cp().write(VUIUtil.color(Color.CYAN) + log + "{end: [ LOG ]}" + VUIUtil.colorReset());
 		} else {
-			SysUtil.logbuffer.add(log);
-			if (SysUtil.verbose) {
+			Sys.logbuffer.add(log);
+			if (Sys.verbose) {
 				System.out.println("[ LOG ] " + log);
 			}
 		}
 	}
 	
 	public static void warn(String warn, String... placeholders) {
-		warn = SysUtil.placeholder(warn, placeholders);
-		if (SysUtil.vuiloaded) {
+		warn = Sys.placeholder(warn, placeholders);
+		if (Sys.vuiloaded) {
 			VUI.get().frame().cp().write(VUIUtil.color(Color.YELLOW) + warn + "{end: [ WARN ]}" + VUIUtil.colorReset());
 		} else {
-			if (SysUtil.verbose) {
+			if (Sys.verbose) {
 				System.out.println("[ WARN ] " + warn);
 			}
 		}
 	}
 
 	public static void error(String error, String... placeholders) {
-		error = SysUtil.placeholder(error, placeholders);
-		if (SysUtil.vuiloaded) {
+		error = Sys.placeholder(error, placeholders);
+		if (Sys.vuiloaded) {
 			VUI.get().frame().cp().write(VUIUtil.color(Color.RED) + error + "{end: [ ERROR ]}" + VUIUtil.colorReset());
 		} else {
-			if (SysUtil.verbose) {
+			if (Sys.verbose) {
 				System.out.println("[ ERROR ] " + error);
 			}
 		}
 	}
 	
 	public static void exception(Exception e) {
-		if (SysUtil.vuiloaded) {
+		if (Sys.vuiloaded) {
 			try {
 				if (VUI.isDebug()) {
-					SysUtil.error("Exception: " + e.toString());
+					Sys.error("Exception: " + e.toString());
 					VUI.write(VUIUtil.color(Color.RED) + "{util:x-10}Message: " + e.getMessage() + VUIUtil.colorReset());
 					VUI.write(VUIUtil.color(Color.RED) + "{util:x-10}Stack:" + VUIUtil.colorReset());
 					StackTraceElement[] ee = e.getStackTrace();
@@ -156,7 +157,7 @@ public class SysUtil {
 				System.out.println(exc);
 			}
 		} else {
-			if (SysUtil.verbose) {
+			if (Sys.verbose) {
 				System.out.println(e);
 			}
 		}
@@ -173,39 +174,39 @@ public class SysUtil {
 	
 	public static<type> boolean isIntern(type[] array, type[] intern) {
 		for (type item : intern) {
-			if (!SysUtil.isIntern(array, item)) return false;
+			if (!Sys.isIntern(array, item)) return false;
 		}
 		return true;
 	}
 	
 	public static void flushLog() {
-		if (SysUtil.vuiloaded) {
-			for (String log : SysUtil.logbuffer) {
-				SysUtil.log(log);
+		if (Sys.vuiloaded) {
+			for (String log : Sys.logbuffer) {
+				Sys.log(log);
 			}
 		}
 	}
 	
 	public static void flushWarn() {
-		if (SysUtil.vuiloaded) {
-			for (String warn : SysUtil.warnbuffer) {
-				SysUtil.warn(warn);
+		if (Sys.vuiloaded) {
+			for (String warn : Sys.warnbuffer) {
+				Sys.warn(warn);
 			}
 		}
 	}
 	
 	public static void flushError() {
-		if (SysUtil.vuiloaded) {
-			for (String error : SysUtil.errorbuffer) {
-				SysUtil.error(error);
+		if (Sys.vuiloaded) {
+			for (String error : Sys.errorbuffer) {
+				Sys.error(error);
 			}
 		}
 	}
 	
 	public static void flushException() {
-		if (SysUtil.vuiloaded) {
-			for (Exception e : SysUtil.ebuffer) {
-				SysUtil.exception(e);
+		if (Sys.vuiloaded) {
+			for (Exception e : Sys.ebuffer) {
+				Sys.exception(e);
 			}
 		}
 	}
@@ -217,6 +218,15 @@ public class SysUtil {
 			}
 		}
 		return message;
+	}
+	
+	public static void exit() {
+		Sys.exit(0);
+	}
+	
+	public static void exit(int code) {
+		ReflectUtil.trigger("sysexit");
+		System.exit(code);
 	}
 	
 }

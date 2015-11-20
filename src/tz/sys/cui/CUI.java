@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.cui.api.CUICommand;
 import tz.sys.cui.api.CUIState;
 import tz.sys.cui.api.CommandString;
@@ -29,7 +29,7 @@ public class CUI {
 		for (CUICommand c : commands) {
 			CUI.commands.put(c.name(), c);
 		}
-		ReflectUtil.load("CUI");
+		ReflectUtil.trigger("CUI");
 	}
 
 	public static void program() {
@@ -56,7 +56,7 @@ public class CUI {
 			try {
 				return c.command(cs);
 			} catch (Exception e) {
-				SysUtil.exception(e);
+				Sys.exception(e);
 				return CUIState.ERROR;
 			}
 		}

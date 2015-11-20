@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.reflect.annot.Loader;
 import tz.sys.reflect.loader.ReflectFile;
 import tz.sys.reflect.loader.ReflectLoader;
@@ -57,7 +57,7 @@ public class ReflectUtil {
 		return util;
 	}
 	
-	public static void load(String trigger) {
+	public static void trigger(String trigger) {
 		if (!ReflectUtil.loaded.contains(trigger)) {
 			ReflectUtil.loaded.add(trigger);
 			ReflectUtil util = ReflectUtil.annotation(Loader.class);
@@ -71,11 +71,11 @@ public class ReflectUtil {
 			});
 			for (Reflect r : util.reflects()) {
 				Loader info = r.annotation(Loader.class);
-				if (SysUtil.isIntern(info.triggers(), trigger)) {
+				if (Sys.isIntern(info.triggers(), trigger)) {
 					r.call(info.function(), trigger);
 				}
 			}
-			SysUtil.log("LOAD TRIGGER '" + trigger + "'");
+			Sys.log("LOAD TRIGGER '" + trigger + "'");
 		}
 	}
 	

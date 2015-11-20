@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.cui.CUIUtil;
 import tz.sys.cui.api.CUICommand;
 import tz.sys.cui.api.CUIState;
@@ -33,7 +33,7 @@ public class CUIRun implements CUICommand {
 		List<String> list = new ArrayList<String>();
 		for (Reflect r : this.util.reflects()) {
 			Program p = r.annotation(Program.class);
-			if (SysUtil.isIntern(p.tags(), "vui")) {
+			if (Sys.isIntern(p.tags(), "vui")) {
 				list.add(this.key(p.name()));
 			}
 		}
@@ -48,22 +48,22 @@ public class CUIRun implements CUICommand {
 			for (Reflect r : this.util.reflects()) {
 				Program p = r.annotation(Program.class);
 				if (this.key(p.name()).equals(program)) {
-					if (SysUtil.isIntern(p.tags(), "vui")) {
+					if (Sys.isIntern(p.tags(), "vui")) {
 						VUI.run(p.name());
 						ok = true;
 						break;
 					} else {
-						SysUtil.error("Program has not the 'vui' tag.");
+						Sys.error("Program has not the 'vui' tag.");
 						return CUIState.ERROR;
 					}
 				}
 			}
 			if (!ok) {
-				SysUtil.error("Program not found.");
+				Sys.error("Program not found.");
 				return CUIState.ERROR;
 			}
 		} else {
-			SysUtil.error("Not enough params.");
+			Sys.error("Not enough params.");
 			return CUIState.ERROR;
 		}
 		System.out.println(Arrays.toString(command.params()));

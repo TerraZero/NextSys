@@ -3,7 +3,7 @@ package tz.sys.cui.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import tz.sys.SysUtil;
+import tz.sys.Sys;
 import tz.sys.cui.CUI;
 import tz.sys.cui.CUIUtil;
 import tz.sys.cui.api.CUICommand;
@@ -46,7 +46,7 @@ public class CUICon implements CUICommand {
 				if (util.isOk()) {
 					VUI.debug(util.bool());
 				} else {
-					SysUtil.error(util.error());
+					Sys.error(util.error());
 				}
 			}
 		}
