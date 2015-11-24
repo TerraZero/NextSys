@@ -151,7 +151,13 @@ public class Reflects {
 		if (type.isAssignableFrom(Byte.class)) return byte.class;
 		return type;
 	}
-
+	
+	/**
+	 * [to] extends [from]
+	 * @param from - the class from [to] extend
+	 * @param to - the class that extend from
+	 * @return
+	 */
 	public static boolean isClass(Class<?> from, Class<?> to) {
 		if (from.isPrimitive() || to.isPrimitive()) {
 			from = Reflects.getClassOfPrimitive(from);

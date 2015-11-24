@@ -218,4 +218,8 @@ public class Reflect {
 		return Reflects.isImplement(this.reflectClass, implement);
 	}
 	
+	public boolean is(Class<?> assignable) {
+		return Reflects.isClass(assignable, this.reflectClass);
+	}
+	
 }
