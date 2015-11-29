@@ -1,4 +1,4 @@
-package tz.sys.net.udp;
+package tz.net.sys.udp;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;

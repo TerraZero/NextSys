@@ -1,4 +1,4 @@
-package tz.sys.net.udp.api;
+package tz.net.sys.udp.api;
 
 public interface NetPacketType {
 

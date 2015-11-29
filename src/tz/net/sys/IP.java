@@ -1,4 +1,4 @@
-package tz.sys.net;
+package tz.net.sys;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;

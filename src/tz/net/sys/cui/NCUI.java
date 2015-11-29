@@ -1,14 +1,14 @@
-package tz.sys.net.cui;
+package tz.net.sys.cui;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tz.net.sys.udp.UDPSocket;
 import tz.sys.cui.CUIUtil;
 import tz.sys.cui.api.CUICommand;
 import tz.sys.cui.api.CUIState;
 import tz.sys.cui.api.CommandString;
 import tz.sys.cui.api.ResolveString;
-import tz.sys.net.udp.UDPSocket;
 import tz.sys.vui.VUI;
 
 public class NCUI implements CUICommand {

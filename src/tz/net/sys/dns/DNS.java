@@ -1,13 +1,13 @@
-package tz.sys.net.dns;
+package tz.net.sys.dns;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import tz.net.sys.lib.URLEncodedUtils;
+import tz.net.sys.lib.URLEncodedUtils.NVPair;
 import tz.sys.Sys;
-import tz.sys.net.lib.URLEncodedUtils;
-import tz.sys.net.lib.URLEncodedUtils.NVPair;
 
 public class DNS {
 	
