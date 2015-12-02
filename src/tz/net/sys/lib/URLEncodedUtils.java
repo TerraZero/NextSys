@@ -1,4 +1,4 @@
-package tz.sys.net.lib;
+package tz.net.sys.lib;
 
 import java.net.URI;
 import java.nio.ByteBuffer;

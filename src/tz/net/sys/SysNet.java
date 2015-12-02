@@ -1,8 +1,8 @@
-package tz.sys.net;
+package tz.net.sys;
 
 import java.nio.ByteBuffer;
 
-import tz.sys.net.udp.UDPSocket;
+import tz.net.sys.udp.UDPSocket;
 import tz.sys.reflect.annot.Program;
 import tz.sys.vui.VUI;
 

@@ -1,4 +1,4 @@
-package tz.sys.net;
+package tz.net.sys;
 
 import java.nio.ByteBuffer;
 import java.util.UUID;

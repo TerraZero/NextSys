@@ -1,4 +1,4 @@
-package tz.sys.net.udp;
+package tz.net.sys.udp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -6,9 +6,9 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+import tz.net.sys.IP;
+import tz.net.sys.dns.DNS;
 import tz.sys.Sys;
-import tz.sys.net.IP;
-import tz.sys.net.dns.DNS;
 
 public class UDPSocket {
 	
