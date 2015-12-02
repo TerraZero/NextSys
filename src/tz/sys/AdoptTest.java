@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import tz.sys.reflect.annot.Program;
 import tz.sys.vui.VUI;
-import tz.sys.vui.input.VUIInput;
 
 @Program(name="Adopt Test", tags={"vui"})
 public class AdoptTest {
