@@ -9,7 +9,7 @@ public class VUILines {
 	private int buffer;
 	
 	public VUILines() {
-		this.buffer = 100;
+		this.buffer = 10000;
 		this.lines = new ArrayList<VUIString>(this.buffer);
 	}
 	

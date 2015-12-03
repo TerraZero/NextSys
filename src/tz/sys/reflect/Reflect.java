@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import tz.sys.Sys;
 import tz.sys.reflect.loader.ReflectLoader;
 
 /**
@@ -59,10 +60,11 @@ public class Reflect {
 			this.reflectClass = ReflectLoader.loader().loadClass(load);
 			this.reflect = null;
 		} catch (ClassNotFoundException e) {
-			System.out.println(e);
+			Sys.exception(e);
 		} catch (NoClassDefFoundError e) {
 			System.out.println("Class not in file system.");
 			System.out.println(e);
+			e.printStackTrace();
 		}
 		return this;
 	}
@@ -109,7 +111,7 @@ public class Reflect {
 					this.reflect = c.newInstance(Reflects.getParameter(args, c.getParameterTypes(), c.isVarArgs()));
 				}
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-				System.out.println(e);
+				Sys.exception(e);
 			}
 		}
 		return this;
@@ -130,9 +132,15 @@ public class Reflect {
 	public<type> type call(String function, Object... parameters) {
 		try {
 			Method method = Reflects.getFunctions(this.reflectClass, function, Reflects.extractClasses(parameters));
+			method.setAccessible(true);
 			return (type)method.invoke(this.reflect, parameters);
 		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			System.out.println(e);
+			int length = 0;
+			if (parameters != null) {
+				length = parameters.length;
+			}
+			Sys.error("Try to call function [0] with [1] parameters", function, length + "");
+			Sys.exception(e);
 			return null;
 		}
 	}
@@ -154,7 +162,7 @@ public class Reflect {
 				try {
 					function.invoke(this.reflect, parameters);
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-					System.out.println(e);
+					Sys.exception(e);
 				}
 			}
 		}
@@ -173,7 +181,7 @@ public class Reflect {
 		try {
 			return (type)this.reflectClass.getField(field).get(this.reflect);
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			System.out.println(e);
+			Sys.exception(e);
 			return null;
 		}
 	}
@@ -190,7 +198,7 @@ public class Reflect {
 		try {
 			this.reflectClass.getField(field).set(this.reflect, set);
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			System.out.println(e);
+			Sys.exception(e);
 		}
 		return this;
 	}

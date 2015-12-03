@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import tz.sys.reflect.annot.Program;
+import tz.sys.reflect.api.Program;
 import tz.sys.vui.VUI;
 
 @Program(name="Adopt Test", tags={"vui"})

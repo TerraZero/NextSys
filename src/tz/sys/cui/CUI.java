@@ -12,7 +12,7 @@ import tz.sys.cui.api.CommandString;
 import tz.sys.cui.api.ResolveString;
 import tz.sys.cui.vui.CUIInput;
 import tz.sys.reflect.ReflectUtil;
-import tz.sys.reflect.annot.Program;
+import tz.sys.reflect.api.Program;
 import tz.sys.vui.VUI;
 import tz.sys.vui.util.VUIUtil;
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import tz.sys.reflect.Reflect;
 import tz.sys.reflect.ReflectUtil;
-import tz.sys.reflect.annot.Program;
+import tz.sys.reflect.api.Program;
 import tz.sys.reflect.loader.ReflectLoader;
 import tz.sys.vui.VUI;
 import tz.sys.vui.VUIPanel;
@@ -48,6 +48,10 @@ public class Main {
 			Program p = r.annotation(Program.class);
 			options.add(p.name());
 		}
+		options.clear();
+		util.reflects().clear();
+		util.reflects().add(new Reflect("tz.io.pdb.PDBExample"));
+		options.add("PDB Test");
 		if (options.size() == 1) {
 			Reflect reflect = util.reflects().get(0);
 			Program program = reflect.annotation(Program.class);

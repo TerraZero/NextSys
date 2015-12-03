@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import tz.sys.reflect.ReflectUtil;
-import tz.sys.reflect.annot.Loader;
+import tz.sys.reflect.api.Loader;
 import tz.sys.vui.VUI;
 import tz.sys.vui.util.VUIUtil;
 

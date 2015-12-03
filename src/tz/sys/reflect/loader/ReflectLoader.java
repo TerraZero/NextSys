@@ -12,7 +12,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import tz.sys.Sys;
-import tz.sys.reflect.annot.Loader;
+import tz.sys.reflect.api.Loader;
 
 /**
  * 
@@ -127,8 +127,8 @@ public class ReflectLoader {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("Unexpected Exception in SysLoader");
-			System.out.println(e);
+			Sys.error("Unexpected Exception in SysLoader");
+			Sys.exception(e);
 		}
 	}
 	

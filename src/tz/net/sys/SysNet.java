@@ -3,7 +3,7 @@ package tz.net.sys;
 import java.nio.ByteBuffer;
 
 import tz.net.sys.udp.UDPSocket;
-import tz.sys.reflect.annot.Program;
+import tz.sys.reflect.api.Program;
 import tz.sys.vui.VUI;
 
 @Program(name="Test Net")

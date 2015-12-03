@@ -8,7 +8,7 @@ import java.util.Map;
 
 import tz.sys.Sys;
 import tz.sys.reflect.ReflectUtil;
-import tz.sys.reflect.annot.Loader;
+import tz.sys.reflect.api.Loader;
 import tz.sys.util.sync.Sync;
 import tz.sys.util.sync.SyncResult;
 import tz.sys.vui.VUI;

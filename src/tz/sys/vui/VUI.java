@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import tz.sys.Sys;
 import tz.sys.reflect.Reflect;
 import tz.sys.reflect.ReflectUtil;
-import tz.sys.reflect.annot.Program;
+import tz.sys.reflect.api.Program;
 
 public class VUI {
 	

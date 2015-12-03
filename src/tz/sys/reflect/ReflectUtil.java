@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import tz.sys.Sys;
-import tz.sys.reflect.annot.Loader;
+import tz.sys.reflect.api.Loader;
 import tz.sys.reflect.loader.ReflectFile;
 import tz.sys.reflect.loader.ReflectLoader;
 

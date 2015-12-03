@@ -1,4 +1,4 @@
-package tz.sys.reflect.annot;
+package tz.sys.reflect.api;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,12 +7,12 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Loader {
+public @interface Program {
 
-	public String[] triggers();
+	public String name();
 	
-	public String function() default "init";
+	public String function() default "program";
 	
-	public int weight() default 0;
+	public String[] tags() default {};
 	
 }
