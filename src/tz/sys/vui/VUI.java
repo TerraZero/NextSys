@@ -10,6 +10,7 @@ import tz.sys.Sys;
 import tz.sys.reflect.Reflect;
 import tz.sys.reflect.ReflectUtil;
 import tz.sys.reflect.api.Program;
+import tz.sys.vui.input.VUIInput;
 
 public class VUI {
 	
@@ -42,6 +43,11 @@ public class VUI {
 				r.call(p.function());
 			}
 		}
+	}
+	
+	public static void exitQuestion() {
+		VUI.write(new VUIInput("Press enter for exit..."));
+		Sys.exit();
 	}
 	
 	private VUIFrame frame;

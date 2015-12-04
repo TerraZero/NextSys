@@ -26,6 +26,9 @@ public class Main {
 				if (part.equals("NextSys")) break;
 				path += part + "/";
 			}
+			if (Sys.os().equals("Linux")) {
+				path = "/" + path;
+			}
 			Sys.log("Detect root: " + path);
 			File root = new File(path);
 			for (File file : root.listFiles()) {

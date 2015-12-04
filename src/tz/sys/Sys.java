@@ -229,4 +229,8 @@ public class Sys {
 		System.exit(code);
 	}
 	
+	public static String os() {
+		return System.getProperty("os.name");
+	}
+	
 }
